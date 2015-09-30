@@ -1,1 +1,252 @@
-Hello World
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Документ без названия</title>
+<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+</head>
+<style>
+
+
+/**
+ * Mixin to put items on a circle
+ * [1] - Allows children to be absolutely positioned
+ * [2] - Allows the mixin to be used on a list
+ * [3] - In case box-sizing: border-box has been enabled
+ * [4] - Allows any type of direct children to be targeted
+ */
+/**
+ * Mixin to put items on a circle
+ * [1] - Allows children to be absolutely positioned
+ * [2] - Allows the mixin to be used on a list
+ * [3] - In case box-sizing: border-box has been enabled
+ * [4] - Allows any type of direct children to be targeted
+ */
+.circle-container {
+  position: relative;
+  /* [1] */
+  width: 578px;
+  height: 578px;
+  padding: 0;
+  border-radius: 50%;
+  list-style: none;
+  background:url(peri-ok.svg) no-repeat 50% 50%;
+  background-size:415px;
+  /* [2] */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  /* [3] */
+  margin: 0em auto 0;
+  border: solid 8px #c6a940;
+}
+.circle-container > * {
+  /* [4] */
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 100px;
+  margin: -20px -75px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.circle-container a {
+  display: block;
+ }
+.circle-container img {
+  display: block;
+  width: 100%;
+ }
+.circle-container img:hover {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
+}
+.da-arrows {
+	position:absolute;	
+}
+.da-arrows span {
+	display:inline-block;
+	height:45px;
+	width:45px;
+	border-radius:100%;
+	background:#b4272d;
+	margin:5px;	
+	position:relative;
+	cursor:pointer;
+}
+.da-arrows span.da-arrows-next:after{
+	content:'';
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 7px 0 7px 10px;
+	border-color: transparent transparent transparent #c6a940;	
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-7px 0 0 -3px;
+}
+.da-arrows span.da-arrows-prev:after{
+	content:'';
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 7px 10px 7px 0;
+	border-color: transparent #c6a940 transparent transparent;	
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin:-7px 0 0 -7px;
+}
+.circle-container .current a {
+  display: block;
+ }
+.banner {
+	position:relative;
+	height:125px;	
+}
+.banner h1 {
+  color: #fff;
+  background: rgb(180,39,45);
+  padding: 15px 20px;
+  box-sizing:border-box;
+  position: absolute;
+  top: -0.5em;
+  width:100%;
+  text-align:center;
+}
+.banner:before {
+  display: block;
+  content: "";
+  background: url(banner-l.svg) center center no-repeat;
+  width: 126px;
+  height: 104px;
+  left: -60px;
+  top: 15px;
+  position: absolute;
+  z-index: -1;
+}
+.banner:after {
+  display: block;
+  content: "";
+  background: url(banner-r.svg) center center no-repeat;
+  width: 126px;
+  height: 104px;
+  right: -60px;
+  top: 15px;
+  position: absolute;
+  z-index: -1;
+}
+.container_chiken {
+	width:1000px;
+	margin:0 auto;
+	position:relative;	
+}
+.information {
+	background:#c6a940;
+	margin:-40px 90px 55px;
+	padding:14px 30px;
+	border-radius:15px;
+	
+}
+.information h2 {font-family: 'cartwheelregular'; color:#fff; font-size: 2.3125rem; margin:0 25px 0 0} 
+.information h2, .information p {display:inline-block;}
+.information p {margin:0 25px 0 0; color:#fff}
+::selection{
+background:transparent
+}
+</style>
+<body>
+<div class="container_chiken">
+<div class="banner"><h1>Peri's Guide to Peri-Peri Perfection</h1></div>
+<div class="information">
+	<h2> </h2><p id="information"> </p>
+</div>
+
+
+<nav class="da-arrows">
+		<span class="da-arrows-prev"></span>
+		<span class="da-arrows-next"></span>
+</nav>
+<ul class='circle-container'>
+  <li class="current"><a href='#'><img src='chillix1.svg' title="title1" alt="For a slightly tangy flavour"></a></li>
+  <li><a href='#'><img src='chillix1.svg' title="title2"  alt="For a slightly tangy flavour2"></a></li>
+  <li><a href='#'><img src='chillix2.svg' title="title3"  alt="For a slightly tangy flavour3"></a></li>
+  <li><a href='#'><img src='chillix3.svg' title="title4"  alt="For a slightly tangy flavour4"></a></li>
+  <li><a href='#'><img src='chillix4.svg' title="title5"  alt="For a slightly tangy flavour5"></a></li>
+   <li><a href='#'><img src='lemon.svg' title="title6"  alt="For a slightly tangy flavour7"></a></li>
+   
+ </ul>
+ </div>
+<script>
+
+    function draw_circle(start) {  
+ 
+  $('.circle-container li').removeClass('current');
+ 
+      $('.circle-container li').each(function(key){ 
+        var rotate = 270 + (key + start) * chicken_item;  
+  
+        $(this).css({
+          transform:' rotate('+ rotate +'deg) translate('+ circle_container +'px) rotate('+ (-rotate) +'deg)'
+        });
+  
+      });
+   
+   c = Math.abs(start % chicken_count);
+   $('.circle-container li:eq('+c+')').addClass('current');
+   
+    }
+    
+  
+  var circle_container = $('.circle-container').width()/2
+     var chicken_count = $(".circle-container li").length;   
+  var chicken_item = 360 / chicken_count;
+     var chicken_current = 0;
+  
+  if ( $(".circle-container li").hasClass("current") ) {
+    var info_title = $('.circle-container li.current').find('img').attr("title");
+	var info = $('.circle-container li.current').find('img').attr("alt")
+   $('#information').append(info)
+   $('.information h2').append(info_title)
+  }
+     
+  draw_circle(chicken_current);
+    
+   $('.da-arrows .da-arrows-next').click(function(){
+    chicken_current--;
+    
+     $('.information h2').html('');
+	 $('#information').html('');
+    draw_circle(chicken_current);
+    
+     if ( $(".circle-container li").hasClass("current") ) {
+	var info_title = $('.circle-container li.current').find('img').attr("title");
+    var info = $('.circle-container li.current').find('img').attr("alt")
+   $('#information').append(info);
+   $('.information h2').append(info_title)
+  }
+    })
+    
+   $('.da-arrows .da-arrows-prev').click(function(){
+    chicken_current ++; 
+    
+    $('#information').html('');
+    draw_circle(chicken_current);
+     if ( $(".circle-container li").hasClass("current") ) {
+	var info_title = $('.circle-container li.current').find('img').attr("title");
+    var info = $('.circle-container li.current').find('img').attr("alt")
+   $('#information').append(info);
+   $('.information h2').append(info_title)
+  }
+    })
+ 	
+	
+</script>
+</body>
+</html>
